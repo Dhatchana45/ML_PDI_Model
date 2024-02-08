@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor VET</title>
+    <style>
+        body {
+            background-color: #ff69b4; /* Pink background color */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: red;
+        }
+        label{
+            color: black;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f4f4f4;
+            width: 300px; /* Set a fixed width or adjust as needed */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            text-align: left; /* Align label text to the left */
+        }
+
+        form input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.getElementById('petform'),addEventListener('submit',function(event)
+        {
+            event.PreventDefault();
+            var name=document.getElementById('Name').value;
+            var MobileNumber=document.getElementById('MobileNumber').value;
+            var dogbreed=document.getElementById('dogbreed').value;
+            var ageofdog=document.getElementById('ageofdog').value;
+            fetch("/save_pet_details",{
+                method: 'POST',
+                headers: {'content-type'-'application/json',},
+                body JSON.Stringify({
+                    name:name,
+                    MobileNumber:Mobile Number,
+                    dogbreed:Dog Breed,
+                    ageofdog:Age_of_dog
+                }),
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .then((error) => console.error('Error':error))
+        });
+
+    </script>
+
+    <h1>Welcome to Dr.Vet</h1>
+    
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="mobile_number" >Mobile Number:</label>
+        <input type="text" id="mobile_number" name="mobile_number" required>
+
+        <label for="dog_breed">Dog Breed:</label>
+        <input type="text" id="dog_breed" name="dog_breed" required>
+
+        <label for="age_of_dog">Age of Dog:</label>
+        <input type="text" id="age_of_dog" name="age_of_dog" required>
+
+        <label for="image">Choose an image:</label>
+        <input type="file" id="image" name="file" accept=".png, .jpg, .jpeg" required>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
