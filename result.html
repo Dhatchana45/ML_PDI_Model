@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor VET</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: pink; /* Set your desired background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333; /* Set your desired title color */
+        }
+
+        .result-box {
+            border: 2px solid #333; /* Set your desired border color */
+            padding: 10px;
+            margin: 20px;
+            display: inline-block;
+            background-color: #fff; /* Set your desired box background color */
+        }
+
+        p {
+            margin: 10px 0;
+            color: #555; /* Set your desired text color */
+        }
+
+        a {
+            color: #007bff; /* Set your desired link color */
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predicted Disease</h1>
+
+    <!-- Display classification results here -->
+    <div class="result-box">
+        <p>Disease: {{ get_disease_name(prediction.predicted_class_index) }}</p>
+        <p>Confidence: {{ prediction.confidence }}</p>
+    </div>
+
+    <!-- Add a link to go back to the home page -->
+    <a href="/">Back to Home</a>
+</body>
+</html>
